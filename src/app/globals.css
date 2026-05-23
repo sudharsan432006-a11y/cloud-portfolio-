@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --infra-dark: #050505;
+  --infra-gray: #121212;
+  --cyber-blue: #00f2ff;
+  --cloud-white: #f0f0f0;
+  --matrix-green: #00ff41;
+  --background: #050505;
+  --foreground: #f0f0f0;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+}
+
+.glass-panel {
+  background-color: rgba(18, 18, 18, 0.5);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+}
+
+.cyber-text-glow {
+  text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
+}
+
+.cyber-border-glow {
+  box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
+}
+
+.holographic-card {
+  position: relative;
+  overflow: hidden;
+  background-image: linear-gradient(to bottom right, #121212, black);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 500ms;
+}
+
+.holographic-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(to right, transparent, rgba(0, 242, 255, 0.05), transparent);
+  transform: translateX(-100%);
+  transition: transform 1000ms;
+}
+
+.holographic-card:hover::after {
+  transform: translateX(100%);
+}
+
+.canvas-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
