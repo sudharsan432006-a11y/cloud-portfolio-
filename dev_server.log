@@ -1,0 +1,16 @@
+
+> cloud-portfolio@0.1.0 dev
+> next dev
+
+ ⚠ Port 3000 is in use, trying 3001 instead.
+   ▲ Next.js 15.1.7
+   - Local:        http://localhost:3001
+   - Network:      http://192.168.0.2:3001
+
+ ✓ Starting...
+ ✓ Ready in 2.4s
+ ○ Compiling / ...
+ ✓ Compiled / in 18.4s (2645 modules)
+ GET / 200 in 19378ms
+ ✓ Compiled in 1226ms (1301 modules)
+ ✓ Compiled in 2.3s (2627 modules)

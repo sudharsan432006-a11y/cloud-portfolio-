@@ -68,3 +68,27 @@ code, pre, .font-mono {
   z-index: -1;
   pointer-events: none;
 }
+
+.console-pane {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 242, 255, 0.2) transparent;
+}
+
+.console-pane::-webkit-scrollbar {
+  width: 4px;
+}
+
+.console-pane::-webkit-scrollbar-thumb {
+  background: rgba(0, 242, 255, 0.2);
+  border-radius: 10px;
+}
+
+@keyframes scan {
+  from { top: 0%; }
+  to { top: 100%; }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
