@@ -1,4 +1,4 @@
-import React, { useRef, useMemo } from 'react';
+import React, { useRef, useMemo, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Points, PointMaterial, Float } from '@react-three/drei';
 import * as THREE from 'three';
@@ -17,9 +17,14 @@ function NetworkNodes() {
     return pos;
   }, []);
 
+  const isReduced = useRef(false);
+
+  useEffect(() => {
+    isReduced.current = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }, []);
+
   useFrame((state) => {
-    const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (isReduced) return;
+    if (isReduced.current) return;
 
     const time = state.clock.getElapsedTime();
     if (ref.current) {
@@ -64,18 +69,23 @@ function DataStreams() {
     });
   }, []);
 
-  useFrame((state) => {
-    const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (isReduced) {
-      if (group.current) {
-        group.current.children.forEach((child) => {
-          if (child instanceof THREE.Line && child.material instanceof THREE.LineBasicMaterial) {
-            child.material.opacity = 0.1;
-          }
-        });
-      }
-      return;
+  const isReduced = useRef(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    isReduced.current = mediaQuery.matches;
+
+    if (isReduced.current && group.current) {
+      group.current.children.forEach((child) => {
+        if (child instanceof THREE.Line && child.material instanceof THREE.LineBasicMaterial) {
+          child.material.opacity = 0.1;
+        }
+      });
     }
+  }, []);
+
+  useFrame((state) => {
+    if (isReduced.current) return;
 
     const time = state.clock.getElapsedTime();
     if (!group.current) return;

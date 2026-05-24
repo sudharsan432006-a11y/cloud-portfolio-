@@ -13,7 +13,7 @@ const CloudSystem = dynamic(() => import('@/components/visuals/CloudSystem'), {
 
 export default function Home() {
   return (
-    <main className="relative bg-infra-dark text-cloud-white min-h-screen">
+    <main className="relative text-cloud-white min-h-screen">
       <CloudSystem />
 
       <div className="relative z-10">

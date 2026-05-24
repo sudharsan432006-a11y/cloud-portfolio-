@@ -30,7 +30,7 @@ export default function Dashboard() {
   if (!mounted) return null;
 
   return (
-    <section className="py-24 px-6 max-w-7xl mx-auto">
+    <section id="dashboard" className="py-24 px-6 max-w-7xl mx-auto">
       <div className="mb-16">
         <h2 className="text-sm font-mono text-cyber-blue uppercase tracking-widest mb-4">Live Infrastructure Monitoring</h2>
         <h3 className="text-4xl md:text-5xl font-bold">DevOps Operations Dashboard</h3>
